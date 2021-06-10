@@ -1,5 +1,5 @@
 - hosts: switches
-  gather_facts: yes
+  gather_facts: no
   #ansible_network_os: yes
 
   tasks:
