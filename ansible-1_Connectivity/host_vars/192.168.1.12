@@ -1,1 +1,1 @@
-ansible_network_os: cisco.nxos.nxos
+ansible_network_os: nxos
