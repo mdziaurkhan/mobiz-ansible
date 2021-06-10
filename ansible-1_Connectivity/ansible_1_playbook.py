@@ -10,7 +10,7 @@
 
           register: output
 
-     #- name: show output
-       #when: 'hostname' in "{{output.stdout}}"
-       #debug:
-         # msg: {{output}}
+     - name: show output
+       when: "hostname" in "{{output.stdout}}"
+       debug:
+          msg: {{output}}
