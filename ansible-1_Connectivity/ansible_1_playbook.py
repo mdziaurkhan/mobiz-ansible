@@ -6,11 +6,11 @@
      - name: "Connectivity check with control machine"
        iso_command:
           commands:
-             - show run | i hostnmae
+             - show run | i hostname
 
           register: output
 
      - name: show output
-       when: "hostname" in "{{output.stdout}}"
+       #when: "hostname" in "{{output.stdout}}"
        debug:
           msg: {{output}}
