@@ -1,16 +1,9 @@
-- host: switches
+- hosts: switches
   gather_facts: no
   ansible_network_os: yes
 
   tasks:
-     - name: "Connectivity check with control machine"
-       iso_command:
-          commands:
-             - show run | i hostname
-
-          register: output
-
-     - name: show output
-       #when: "hostname" in "{{output.stdout}}"
-       debug:
-          var: output
+    - name: "Connectivity Check with Control machine by running ios commands"
+      ios_command:
+        commands:
+          - show run | i hostname
