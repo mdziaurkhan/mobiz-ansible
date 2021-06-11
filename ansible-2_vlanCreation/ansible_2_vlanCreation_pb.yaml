@@ -17,12 +17,11 @@
           state: active
           shutdown: disabled
       state: merged
-      #when: ansible_network_os == ios
-    - name: "vlan creation in Nexus switches"
-      cisco.nxos.nxos_vlans:
-        config:
-          - vlan_id: 100
-            name: nxos-vlan
-            enabled: true
-        state: merged
-      #when: ansible_network_os == nxos
+
+  - name: "vlan creation in Nexus switches"
+    cisco.nxos.nxos_vlans:
+      config:
+        - vlan_id: 100
+          name: nxos-vlan
+          enabled: true
+      state: merged
