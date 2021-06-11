@@ -9,7 +9,7 @@
         - show run | i hostname
 
 
-  - name: "vlan creation in IOS switches"
+  - name: "ios"
     cisco.ios.ios_vlans:
       config:
         - name: ios-vlan
@@ -18,7 +18,7 @@
           shutdown: disabled
       state: merged
 
-  - name: "vlan creation in Nexus switches"
+  - name: "nexus"
     cisco.nxos.nxos_vlans:
       config:
         - vlan_id: 100
