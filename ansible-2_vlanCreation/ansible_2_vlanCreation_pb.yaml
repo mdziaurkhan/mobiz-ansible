@@ -3,20 +3,20 @@
 
 
   tasks:
-    - name: "Connectivity Check with Control machine by running ios commands"
-      ios_command:
-        commands:
-          - show run | i hostname
+  - name: "Connectivity Check with Control machine by running ios commands"
+    ios_command:
+      commands:
+        - show run | i hostname
 
 
-    - name: "vlan creation in IOS switches"
-      cisco.ios.ios_vlans:
-        config:
-          - name: ios-vlan
-            vlan_id: 100
-            state: active
-            shutdown: disabled
-        state: merged
+  - name: "vlan creation in IOS switches"
+    cisco.ios.ios_vlans:
+      config:
+        - name: ios-vlan
+          vlan_id: 100
+          state: active
+          shutdown: disabled
+      state: merged
       #when: ansible_network_os == ios
     - name: "vlan creation in Nexus switches"
       cisco.nxos.nxos_vlans:
