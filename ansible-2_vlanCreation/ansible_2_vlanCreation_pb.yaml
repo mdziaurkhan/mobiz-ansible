@@ -1,9 +1,27 @@
 - hosts: switches
   gather_facts: no
-  #ansible_network_os: yes
+
 
   tasks:
     - name: "Connectivity Check with Control machine by running ios commands"
       ios_command:
         commands:
           - show run | i hostname
+
+
+    - name: "vlan creation"
+      when: ansible_network_os == ios
+      cisco.ios.ios_vlans:
+        config:
+          - name: ios-vlan
+            vlan_id: 100
+            state: active
+            shutdown: disabled
+        state: merged
+      when: ansible_network_os == nxos
+      cisco.nxos.nxos_vlans:
+        config:
+          - vlan_id: 100
+            name: nxos-vlan
+            enabled: true
+        state: merged
