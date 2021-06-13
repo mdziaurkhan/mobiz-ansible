@@ -20,7 +20,7 @@
           state: active
           shutdown: disabled
       state: merged
-    when: ansible_network_os: ios
+    when: ansible_network_os == ios
 
   - name: "Configureing vlans in Nexus switches"
     nxos_vlans:
@@ -29,4 +29,4 @@
           name: nxos-vlan
           state: merged
       state: merged
-    when: ansible_network_os: nxos
+    when: ansible_network_os == nxos
