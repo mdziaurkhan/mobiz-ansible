@@ -27,5 +27,5 @@
       config:
         - vlan_id: 300
           name: nxos-vlan
-          state: merged
+          state: active
       state: merged
