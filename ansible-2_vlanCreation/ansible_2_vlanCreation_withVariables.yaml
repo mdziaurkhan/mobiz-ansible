@@ -1,0 +1,31 @@
+- hosts: switches
+  gather_facts: no
+
+
+
+  tasks:
+  - name: "Connectivity Check with Control machine by running ios commands"
+    ios_command:
+      commands:
+        - show run | i hostname
+
+
+  - name: "Configuring vlan {{input_vlan_id}} in Cisco IOS switches"
+    when: ansible_network_os == "ios"
+    ios_vlans:
+      config:
+        - name: "{{input_vlan_name}}"
+          vlan_id: "{{input_vlan_id}}"
+          state: active
+          shutdown: disabled
+      state: merged
+
+
+  - name: "Configureing vlan {{input_vlan_id}} in Nexus switches"
+    when: ansible_network_os == "nxos"
+    nxos_vlans:
+      config:
+        - vlan_id: "{{input_vlan_id}}"
+          name: "{{input_vlan_name}}"
+          state: active
+      state: merged
