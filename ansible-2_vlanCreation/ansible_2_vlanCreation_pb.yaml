@@ -12,19 +12,21 @@
         - show run | i hostname
 
 
-  - name: "ios"
+  - name: "Configuring vlans in Cisco IOS switches"
     ios_vlans:
       config:
         - name: ios-vlan
-          vlan_id: 100
+          vlan_id: 200
           state: active
           shutdown: disabled
       state: merged
+    when: ansible_network_os: ios
 
-  - name: "nexus"
+  - name: "Configureing vlans in Nexus switches"
     nxos_vlans:
       config:
-        - vlan_id: 100
+        - vlan_id: 300
           name: nxos-vlan
-          enabled: true
+          state: merged
       state: merged
+    when: ansible_network_os: nxos
