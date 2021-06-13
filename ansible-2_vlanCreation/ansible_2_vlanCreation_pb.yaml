@@ -11,7 +11,7 @@
 
 
   - name: "Configuring vlans in Cisco IOS switches"
-    when: ansible_network_os == ios
+    when: ansible_network_os == "ios"
     ios_vlans:
       config:
         - name: ios-vlan
@@ -22,7 +22,7 @@
 
 
   - name: "Configureing vlans in Nexus switches"
-    when: ansible_network_os == nxos
+    when: ansible_network_os == "nxos"
     nxos_vlans:
       config:
         - vlan_id: 300
